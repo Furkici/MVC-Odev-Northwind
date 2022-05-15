@@ -1,0 +1,40 @@
+﻿@model MVC_NorthWindOdev.Models.Customer
+@{
+    ViewBag.Title = "CustomerDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CustomerDetails</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style>
+        .listeleme {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="listeleme">
+
+        <h2>Customer ID =  @Model.CustomerID.</h2>
+        <ul>
+
+            <li>@Model.ContactName</li>
+            <li>@Model.CompanyName</li>
+            <li>@Model.Phone</li>
+            <li>@Model.City</li>
+            <li>@Model.Country</li>
+            <li>@Model.ContactName</li>
+
+
+
+        </ul>
+    </div>
+</body>
+</html>
+

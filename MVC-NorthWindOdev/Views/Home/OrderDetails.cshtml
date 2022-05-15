@@ -1,0 +1,41 @@
+﻿@model MVC_NorthWindOdev.Models.Order
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>OrderDetails</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style>
+        .listeleme {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="listeleme">
+
+        <h2>Order ID = @Model.OrderID</h2>
+        <ul>
+            <li>@Model.RequiredDate</li>
+            <li>@Model.ShippedDate</li>
+            <li>@Model.EmployeeID</li>
+            <li>@Model.CustomerID</li>
+            <li>@Model.ShipCity</li>
+            <li>@Model.ShipCountry</li>
+            <li>@Model.Freight</li>
+
+
+
+        </ul>
+    </div>
+</body>
+</html>
+
