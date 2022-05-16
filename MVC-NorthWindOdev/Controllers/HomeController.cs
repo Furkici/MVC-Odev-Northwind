@@ -11,15 +11,16 @@ namespace MVC_NorthWindOdev.Controllers
     {
         NORTHWNDEntities db = new NORTHWNDEntities();
 
-        public static List<Customer> customers = new List<Customer>();
-        public static List<Order> orders = new List<Order>();
+        
 
         // GET: Home
         public ActionResult Index()
         {
+            
+             
             //Listeleme işlemleri
-            customers = db.Customers.OrderByDescending(x => x.CustomerID).ToList();
-            orders = db.Orders.OrderBy(x => x.OrderID).ToList();
+            List<Customer> customers = db.Customers.OrderByDescending(x => x.CustomerID).ToList();
+            List<Order> orders = db.Orders.OrderBy(x => x.OrderID).ToList();
 
             List<Employee> employees = db.Employees.OrderBy(x => x.EmployeeID).ToList();
             List<Product> products = db.Products.OrderBy(x=> x.ProductID).ToList();
@@ -31,7 +32,6 @@ namespace MVC_NorthWindOdev.Controllers
             TempData["Toplammüşteri"]=customers.Count();
 
             //Listeleme tempdata
-            //TempData["Orders"] = orders.ToList();
             TempData["Customers"] = customers.Take(20).ToList();
             TempData["Sonsiparişler"]=orders.OrderByDescending(x => x.OrderDate).Take(20).ToList();
             TempData.Keep();
@@ -41,7 +41,7 @@ namespace MVC_NorthWindOdev.Controllers
         //Müşteri Detayı
         public ActionResult CustomerDetails(string id)
         {
-            var customerdetay = customers.Find(x => x.CustomerID == id);
+            var customerdetay = db.Customers.ToList().Find(x => x.CustomerID == id);
 
             return View(customerdetay);
             
@@ -50,7 +50,7 @@ namespace MVC_NorthWindOdev.Controllers
         //Sipariş Detayı
         public ActionResult OrderDetails(int id)
         {
-            var orderdetay = orders.Find(x => x.OrderID == id);  
+            var orderdetay = db.Orders.ToList().Find(x => x.OrderID == id); 
             return View(orderdetay);
         }
 
@@ -64,8 +64,8 @@ namespace MVC_NorthWindOdev.Controllers
         public ActionResult AddCustomer(Customer customer)
         {
             
-            customers.Add(customer);
-
+            db.Customers.Add(customer);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

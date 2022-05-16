@@ -1,4 +1,4 @@
-﻿
+﻿@model MVC_NorthWindOdev.Models.Customer
 @{
     ViewBag.Title = "AddCustomer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,16 +16,20 @@
     <div>
         <form method="post">
             <div>
+                <label>Customer Id: </label>
+                <input type="text" name="CustomerID" />
+            </div>
+            <div>
                 <label>Company Name: </label>
-                <input type="text" name="Company Name" />
+                <input type="text" name="CompanyName" />
             </div>
             <div>
                 <label>Contact Name: </label>
-                <input type="text" name="Contact Name" />
+                <input type="text" name="ContactName" />
             </div>
             <div>
                 <label>Phone: </label>
-                <input type="text" name="Phone Number" />
+                <input type="text" name="Phone" />
             </div>
             <button type="submit">AddCustomer</button>
         </form>
